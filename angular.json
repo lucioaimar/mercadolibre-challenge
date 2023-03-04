@@ -7,31 +7,28 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss",
+          "standalone": true,
+          "flat": true
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "client",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/mercadolibre-frontend",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "index": "client/index.html",
+            "main": "client/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["client/favicon.ico", "client/assets"],
+            "styles": ["client/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -82,23 +79,18 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["client/favicon.ico", "client/assets"],
+            "styles": ["client/styles.scss"],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1a0ec4e5-d905-4321-8a42-da450fa9441c"
   }
 }
