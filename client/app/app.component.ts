@@ -1,22 +1,24 @@
-import { ProfileService } from './features/profile/profile.service';
-import { Component, inject } from '@angular/core';
+import { NavComponent } from './shared/components/nav/nav.component';
 import { RouterOutlet } from '@angular/router';
-import { NgSwitch, NgSwitchDefault, NgSwitchCase } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ErrorCardComponent } from './shared/components/error-card/error-card.component';
+import { GlobalService } from './global.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, ErrorCardComponent, NavComponent],
+  template: `
+    <app-nav></app-nav>
+    <router-outlet/>
+    <div class="fixed bottom-0 right-0 p-4">
+      <app-error-card *ngIf="globalService.error$ | async as error" [message]="error" [show]="!!error"/>
+    </div>
+  `,
 })
 export class AppComponent {
   title = 'mercadolibre-frontend';
-  profileService = inject(ProfileService);
 
-  ngOnInit() {
-    this.profileService.getUser().subscribe((res) => {
-      console.log(res);
-    });
-  }
+  globalService = inject(GlobalService);
 }

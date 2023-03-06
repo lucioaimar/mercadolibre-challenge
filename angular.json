@@ -10,8 +10,7 @@
           "inlineTemplate": true,
           "inlineStyle": true,
           "style": "scss",
-          "standalone": true,
-          "flat": true
+          "standalone": true
         }
       },
       "root": "",
@@ -79,12 +78,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "main": "client/test.ts",
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["client/favicon.ico", "client/assets"],
             "styles": ["client/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           }
         }
       }

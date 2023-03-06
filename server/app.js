@@ -1,4 +1,3 @@
-const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -6,30 +5,69 @@ const port = 3000;
 
 app.use(cors());
 
-const mercadolibreService = require('./MercadolibreService.js');
+const MercadolibreService = require("./MercadolibreService.js");
+
+const mercadolibreService = new MercadolibreService();
 
 app.get("/getUser", (req, res) => {
-  res.json(mercadolibreService.getUser());
+  mercadolibreService.getUser().then((user) => {
+    res.json(user);
+  });
 });
 
-app.get("/getUserRestrictions", (req, res) => {
-  res.json(mercadolibreService.getUserRestrictions(req.params.id));
+app.get("/getUserRestrictions/:id", (req, res) => {
+  mercadolibreService
+    .getUserRestrictions(req.params.id)
+    .then((userRestrictions) => {
+      res.json(userRestrictions);
+    })
+    .catch((error) => {
+      res.status(error.status).json(error.message);
+    });
 });
 
 app.get("/getUserPurchases/:id", (req, res) => {
-  res.json(mercadolibreService.getUserRestrictions(req.params.id, req.params.limit, req.params.page));
+  mercadolibreService
+    .getUserPurchases(req.params.id, req.query.limit, req.query.page)
+    .then((userPurchases) => {
+      res.json(userPurchases);
+    })
+    .catch((error) => {
+      res.status(error.status).json(error.message);
+    });
 });
 
-app.get("/getLevel", (req, res) => {
-  res.json(mercadolibreService.getLevel(req.params.id));
+app.get("/getLevel/:id", (req, res) => {
+  mercadolibreService
+    .getLevel(req.params.id)
+    .then((level) => {
+      res.json(level);
+    })
+    .catch((error) => {
+      res.status(error.status).json(error.message);
+    });
 });
 
 app.get("/getShipment/:id", (req, res) => {
-  res.json(mercadolibreService.getShipment(req.params.id));
+  mercadolibreService
+    .getShipment(req.params.id)
+    .then((shipment) => {
+      res.json(shipment);
+    })
+    .catch((error) => {
+      res.status(error.status).json(error.message);
+    });
 });
 
-app.get("/getPayment", (req, res) => {
-  res.json(mercadolibreService.getPayment(req.params.id));
+app.get("/getPayment/:id", (req, res) => {
+  mercadolibreService
+    .getPayment(req.params.id)
+    .then((payment) => {
+      res.json(payment);
+    })
+    .catch((error) => {
+      res.status(error.status).json(error.message);
+    });
 });
 
 app.listen(port, () => {

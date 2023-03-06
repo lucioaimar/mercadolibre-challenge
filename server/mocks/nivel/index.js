@@ -3,6 +3,7 @@
 module.exports = {
   ORO: {
     id_nivel: 'ORO',
-    descripción: 'Nivel Oro - Mercadopuntos',
+    //It's an error to name this with an accent
+    descripcion: 'Nivel Oro - Mercadopuntos',
   },
 };

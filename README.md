@@ -1,27 +1,25 @@
 # MercadolibreFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+This project was made for a MercadoLibre Tech assesment
 
-## Development server
+## Running the project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+First you have to install all the dependencies using `npm install`
 
-## Code scaffolding
+To run the project you have to run 2 commnads `npm run start-be` to start the backend and `npm run start-fe` or `ng serve` to start the frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+After that you can navigate to `http://localhost:4200`
 
-## Build
+## Running the tests
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To run the tests you can use the comman `ng test`
 
-## Running unit tests
+## Considerations
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To create this project I used Angular as it's the framework I'm most familiar with, I wanted to use a reactive and declarative architecture using the library rxjs.
 
-## Running end-to-end tests
+For the styling I used Tailwind as it allows me to handle styles very quickly on a project.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+I didn't create the unit test for the shared components as I didn't have time but I created all the unit test for components and services in the feature folder.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+There was a custom service I used to map the purchases list to one in particular, this was made because the MercadoLibreService for the backend didn't come with a function to retrieve a purchase by id
